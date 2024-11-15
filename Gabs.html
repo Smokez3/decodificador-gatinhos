@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decodificador Base64 com Gatinhos</title>
+    <style>
+        /* Reset de margens e padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Definindo o estilo geral da página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        /* Estilo do título */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00ff7f;
+            text-shadow: 0 0 10px #00ff7f;
+        }
+
+        /* Estilo do botão */
+        #btn-descobrir {
+            background-color: #00ff7f;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #121212;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-bottom: 30px;
+        }
+
+        /* Efeito de hover no botão */
+        #btn-descobrir:hover {
+            background-color: #00e67d;
+            transform: scale(1.05);
+        }
+
+        /* Estilo do terminal */
+        #terminal {
+            width: 80%;
+            max-width: 600px;
+            background-color: #1e1e1e;
+            border: 2px solid #00ff7f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 127, 0.6);
+            font-size: 1.1rem;
+            font-family: "Courier New", Courier, monospace;
+            color: #00ff7f;
+            margin-bottom: 20px;
+            overflow-y: auto;
+        }
+
+        /* Estilo para as imagens de gatinhos */
+        .kitten-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .kitten-images img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 127, 0.6);
+            transition: transform 0.3s;
+        }
+        .kitten-images img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animação para texto do terminal */
+        .typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #00ff7f;
+            animation: typing 2s steps(30) 1s 1 normal both;
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Decodificador Base64 com Gatinhos</h1>
+    <button id="btn-descobrir">Descobrir</button>
+    <div id="terminal">
+        <div class="typing">Clique no botão para decodificar...</div>
+    </div>
+
+    <!-- Container para imagens de gatinhos -->
+    <div class="kitten-images" id="kitten-container" style="display: none;">
+        <img src="https://placekitten.com/150/150" alt="Gatinho 1">
+        <img src="https://placekitten.com/151/150" alt="Gatinho 2">
+        <img src="https://placekitten.com/152/150" alt="Gatinho 3">
+        <img src="https://placekitten.com/153/150" alt="Gatinho 4">
+        <img src="https://placekitten.com/154/150" alt="Gatinho 5">
+    </div>
+
+    <script>
+        document.getElementById('btn-descobrir').addEventListener('click', function() {
+            var base64text = "c2UgZXUgcHVkZXNzZSB2aXJhciB1bWEgYmViaWRhIHNlcmlhIHVtIHZpbmhvIHByYSBlbmNvc3RhciBuYSBzdWEgYm9jYSBlIHRlIGRlaXhhciBjb20gdGVz428=";
+            var decodedText = atob(base64text); // Decodificando o texto Base64
+
+            // Exibindo o texto decodificado no terminal
+            var terminal = document.getElementById('terminal');
+            terminal.innerHTML = "<div class='typing'>" + decodedText + "</div>";
+
+            // Exibindo as imagens de gatinhos
+            var kittenContainer = document.getElementById('kitten-container');
+            kittenContainer.style.display = 'flex';
+        });
+    </script>
+</body>
+</html>
